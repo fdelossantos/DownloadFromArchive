@@ -1,3 +1,8 @@
+### DownloadFromArchive
+### Proyecto de aprendizaje que permite descargar una colección desde Archive.org.
+### Licencia: GNU General Public License v3.0.
+### Author: federicod (twitter), fdelossantos (GitHub)
+
 from urllib.parse import unquote
 from urllib.request import urlretrieve
 from bs4 import BeautifulSoup
@@ -57,9 +62,11 @@ strUrl = input("Ingrese la URL base de descarga (/details/<nombre-archivo>):  ")
 inicio = int(input("Ingrese el número de página inicial: "))
 fin = int(input("Ingrese el número de página final: "))
 carpetaDestino = input("Ingrese la carpeta de destino (c:\\temp): ")
-if strUrl == "":
-    strUrl = "/details/archivos-del-terror-de-uruguay"
+if (strUrl == ""):
+    print(f"La ruta que ingresó está vacía.")
+    exit()
 if not os.path.exists(carpetaDestino):
     print(f"La ruta '{carpetaDestino}' no es válida. Debe crearla previamente.")
+    exit()
 recorrer_resultados_busqueda(strUrl, inicio, fin, carpetaDestino)
 print("El programa ha terminado.")
